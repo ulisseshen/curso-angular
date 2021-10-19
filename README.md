@@ -1,4 +1,4 @@
-## Nota Desenvoledor 
+## Nota Desenvolvedor 
 <h4 align="center"> 
 	🚧  Curso Angular 🚀 Em construção...  🚧
 </h4>
