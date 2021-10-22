@@ -7,9 +7,15 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit {
-  @ViewChild('name', { static: false }) nameInput!: ElementRef;
-  @ViewChild('amount', { static: false }) amountInput!: ElementRef;
-  @Output() ingredientsAdded = new EventEmitter<Ingredient>();
+  @ViewChild('name', { static: false })
+  nameInput!: ElementRef;
+
+  @ViewChild('amount', { static: false })
+  amountInput!: ElementRef;
+
+  @Output()
+  ingredientsAdded = new EventEmitter<Ingredient>();
+
   constructor() { }
 
   ngOnInit(): void {
