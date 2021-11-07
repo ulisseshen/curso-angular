@@ -10,25 +10,22 @@ import { User } from './user.model';
 })
 export class UserComponent implements OnInit, OnDestroy {
   user: User;
-  paramsSubscription:Subscription;
-  constructor(private router: ActivatedRoute) { }
+  paramsSubscription: Subscription;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.user = {
-      id : this.router.snapshot.params['id'],
-      name: this.router.snapshot.params['name']
-    }
-
-    this.paramsSubscription = this.router.params
-    .subscribe(
-      (params:Params) => {
-        this.user.id = params.id;
-        this.user.name = params.name;
-      }
-    )
+    this.paramsSubscription = this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.user = {
+            id: +params.id,
+            name: params.name
+          }
+        }
+      )
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.paramsSubscription.unsubscribe();
   }
 
