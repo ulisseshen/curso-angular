@@ -13,6 +13,7 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRouterModule } from './app.router.module';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactive-guard.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { AppRouterModule } from './app.router.module';
     FormsModule,
     AppRouterModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
