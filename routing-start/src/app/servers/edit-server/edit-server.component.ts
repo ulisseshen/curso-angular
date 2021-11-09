@@ -42,7 +42,7 @@ export class EditServerComponent implements OnInit, CanComponentDeactivate {
   onUpdateServer() {
     this.serversService.updateServer(this.server.id, { name: this.serverName, status: this.serverStatus });
     this.changesSalved = true;
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['../'], { relativeTo: this.route, queryParamsHandling: 'preserve' });
   }
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {

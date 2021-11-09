@@ -14,6 +14,7 @@ import { ServersService } from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRouterModule } from './app.router.module';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactive-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CanDeactivateGuard } from './servers/edit-server/can-deactive-guard.ser
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
