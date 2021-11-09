@@ -1,5 +1,7 @@
+import { Server } from "./server/server.model";
+
 export class ServersService {
-  private servers = [
+  private servers:Server[] = [
     {
       id: 1,
       name: 'Productionserver',
