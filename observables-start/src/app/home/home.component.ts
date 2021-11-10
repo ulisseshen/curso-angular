@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { interval, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +8,25 @@ import { interval, Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  subscription:Subscription;
+  subscription: Subscription;
   constructor() { }
 
   ngOnInit() {
-   this.subscription =  interval(1000)
+    // this.subscription = interval(1000)
+    //   .subscribe(count => console.log(count));
+    const customIntervalObservable = new Observable(observer => {
+      let count = 0;
+      setInterval(() => {
+        observer.next(count);
+        count++;
+      }, 1000)
+    });
+
+    this.subscription = customIntervalObservable
       .subscribe(count => console.log(count));
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }
