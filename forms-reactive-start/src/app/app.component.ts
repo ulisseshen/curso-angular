@@ -3,6 +3,10 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
+interface ValidationResult {
+  [s: string]: boolean;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -48,7 +52,7 @@ export class AppComponent implements OnInit {
     (this.signupForm.get('hobbies') as FormArray).push(control)
   }
 
-  forbiddenNames(control: FormControl): { [s: string]: boolean } {
+  forbiddenNames(control: FormControl): ValidationResult {
     const names = ['admin', 'adm'];
     if (names.includes(control.value)) {
       return { 'nameIsForbidden': true }
@@ -56,7 +60,7 @@ export class AppComponent implements OnInit {
     return null;
   }
 
-  asyncForbiddenEmail(control: FormControl): Observable<{[s:string]:boolean}> {
+  asyncForbiddenEmail(control: FormControl): Observable<ValidationResult> {
     return of(control.value == 'ulisses@email.com')
       .pipe(delay(1000),
         map(res => {
